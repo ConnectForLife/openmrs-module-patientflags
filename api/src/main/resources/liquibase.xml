@@ -354,4 +354,18 @@
         <addUniqueConstraint tableName="patientflags_tag" columnNames="name"  constraintName="patientflags_tag_name_unique"></addUniqueConstraint>
     </changeSet>
 
+    <changeSet id="patientflags_priority_rename_rank_column" author="dkayiwa">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="patientflags_priority" />
+			<and>
+				<columnExists tableName="patientflags_priority" columnName="rank" />
+			</and>
+		</preConditions>
+		<comment>Renaming column rank to p_rank because rank is a reserved word in MySQL 8.0.2 and later</comment>
+		<renameColumn columnDataType="int"
+		              newColumnName="p_rank"
+		              oldColumnName="rank"
+		              tableName="patientflags_priority" />
+	</changeSet>
+
 </databaseChangeLog>
