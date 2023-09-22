@@ -13,9 +13,9 @@
                 patientId: ${patientId}
             }, function (response) {
                 if (!response) {
-                    ${ ui.message("coreapps.none ") }
+                    ${ ui.message("coreapps.none") }
                 } else {
-                    jq("#flags").html(response.replace("{=", "").replace("}", ""));
+                    jq("#flags").html(response[""]);
                 }
             });
         </script>
